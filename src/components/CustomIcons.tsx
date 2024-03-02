@@ -1,6 +1,10 @@
-import { Icon } from '@mui/material'
-import Location from './../assets/icons/Location.svg'
+import { Icon } from '@mui/material';
+import Down from './../assets/icons/dropdown.svg';
+import MyLocationIcon from '@mui/icons-material/MyLocation';
 
 export const LocationIcon = () => {
-  return (<Icon><img src={Location} style={{ margin: 2}}/></Icon>)
-}
+  return (<MyLocationIcon color={'primary'} />);
+};
+export const DownIcon = () => {
+  return (<Icon><img src={Down} style={{ margin: 2}}/></Icon>);
+};

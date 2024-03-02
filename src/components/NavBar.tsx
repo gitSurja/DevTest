@@ -17,6 +17,7 @@ import Link from '@mui/material/Link';
 import logoLarge from './../assets/logo/logoLarge.png'
 import { routerPaths } from '../router/routerConfig';
 import { Link as RouterLink } from "react-router-dom";
+import { Stack } from '@mui/material';
 
 const settings = ['Profile', 'Settings', 'Logout'];
 interface NavBar {
@@ -42,7 +43,7 @@ function NavBar({isLoggedIn} : NavBar) {
   };
 
   return (
-    <AppBar position="static" color={'transparent'} sx={{ boxShadow: 'none' }}>
+    <AppBar sx={{ boxShadow: 'none' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* HEADER LEFT */}
@@ -103,14 +104,14 @@ function NavBar({isLoggedIn} : NavBar) {
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
             <img src={logoLarge} />
           </Box>
-          <Box sx={{ display: { xs: 'none', md: 'flex' }  }}>
+          <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 4  }}>
             {routerPaths.map((path) => {
               if (isLoggedIn && path.path.includes('login')) {
                 return;
               } else {
                 return (
-                  <Link key={path.id} component={RouterLink} to={path.path} >
-                    <Button sx={{ color: 'text.primary', blockSize: '100%' }}>
+                  <Link key={path.id} component={RouterLink} to={path.path}>
+                    <Button sx={{ color: 'text.primary' }}>
                       {path.label}
                     </Button>
                   </Link>

@@ -1,10 +1,13 @@
 import * as React from 'react';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { Container } from '@mui/material';
+import { Button, Container, Divider, Grid, IconButton } from '@mui/material';
 import { LocationIcon } from './CustomIcons';
+import { priceRangeData, propertyTypeData } from '../utils/data';
+import CustomSelect from './CustomSelect';
+import CustomInput from './CustomInput';
+import { getCurrentLocation } from '../utils/helper';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -16,10 +19,10 @@ function TabPanel(props: TabPanelProps) {
 
   return (
     <Box
-    maxWidth={'lg'}
+      maxWidth={'lg'}
+      zIndex={8}
       sx={{
-        bgcolor: 'background.default',
-        boxShadow: 3,
+        backgroundColor: 'Background',
       }}
       role="tabpanel"
       hidden={value !== index}
@@ -28,56 +31,92 @@ function TabPanel(props: TabPanelProps) {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
+        <Box sx={{
+          paddingBlock: 5,
+          paddingInline: 3,
+          boxShadow:
+              `0px 0px 4.4px rgba(0, 0, 0, 0.01),
+              0px 0px 12.3px rgba(0, 0, 0, 0.015),
+              0px 0px 29.5px rgba(0, 0, 0, 0.02),
+              0px 0px 98px rgba(0, 0, 0, 0.03)`,
+          }}
+        >
+          {children}
         </Box>
       )}
     </Box>
   );
 }
 
-export const CustomTab = ({tabHeaderData}) => {
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-    setValue(newValue);
+interface CustomTabProps {
+  tabHeaderData?: []
+  type?: string
+}
+export const CustomTab = ({tabHeaderData}: CustomTabProps) => {
+  const [tabValue, setTabValue] = React.useState(0);
+  // form state
+  const [location, setLocation] = React.useState('');
+  const [propertyType, setPropertyType] = React.useState(propertyTypeData[0].value);
+  const [priceRange, setPriceRange] = React.useState(priceRangeData[0].value);
+  
+  const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
+    setTabValue(newValue);
   };
+
+  const handleSubmit = (data: any) => {
+    const reqmodel = {
+      location: data.location,
+      propertyType: data.propertyType,
+      priceRange: data.priceRange
+    }
+    return reqmodel;
+  };
+
   return (
     <Container maxWidth={'lg'}>
-      <Box>
-        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example"
+      <Box width={'fit-content'}>
+        <Tabs value={tabValue} onChange={handleChangeTab} aria-label="basic tabs example"
           scrollButtons="auto"
           TabIndicatorProps={{
             style: { display: 'none' }
           }}>
           {tabHeaderData && tabHeaderData?.map(item => {
-            return <Tab defaultChecked label={item.label} />
+            return <Tab defaultChecked label={item.label} />;
           })}
         </Tabs>
       </Box>
-      <Box>
-      {/* {tabHeaderData && tabHeaderData?.map((item, index) => {
-        return (
-          <>
-            <TabPanel value={value} index={index}>
-              Content for Tab {index + 1}
-            </TabPanel>
-          </>
-        )
-      })} */}
-        <TabPanel value={value} index={0}>
-          Content for Tab <LocationIcon />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          Content for Tab 2
-        </TabPanel>
-        <TabPanel value={value} index={2}>
-          Content for Tab 3
-        </TabPanel>
-        <TabPanel value={value} index={3}>
-          Content for Tab 4
-        </TabPanel>
-      </Box>
+      <TabPanel value={tabValue} index={0}>
+        <Grid container justifyContent={'space-between'} gap={{ sm: 2, md: 0}} flexDirection={{ xs: 'column', md: 'row'}}>
+          <Grid item sx={{ display: 'flex', width: { sm: '100%', md: 'auto'} }}>
+            <CustomInput id="location-input" label="Locations" placeholder={'Enter your locations'}
+              value={location}
+              onChange={setLocation}
+              endIconComponent={
+                <IconButton onClick={getCurrentLocation} sx={{boxShadow: 'none', backgroundColor: 'transparent'}}>
+                  <LocationIcon />
+                </IconButton>}
+            />
+          </Grid>
+          <Divider orientation="vertical" variant="fullWidth" flexItem />
+          <Grid item sx={{ alignItems: 'center', width: { sm: '100%', md: 'auto'} }} >
+            <CustomSelect defaultValue={propertyTypeData[0].value} value={propertyType} onChange={setPropertyType} label={'Property Type'} data={propertyTypeData} id={'property-type'} />
+          </Grid>
+          <Divider orientation="vertical" variant="middle" flexItem />
+          <Grid xs={5} item sx={{display: 'flex', alignItems: 'center', flexDirection: {sm:'column' ,md: 'row'}, minWidth: {sm: '100%', md: 'auto'}}}>
+            <CustomSelect defaultValue={priceRangeData[0].value} value={priceRange} onChange={setPriceRange} label={'Price Range'} data={priceRangeData} id={'price-range'} />
+            <Button onClick={() => handleSubmit({location, propertyType, priceRange})} variant={'contained'}>Search</Button>
+          </Grid>
+        </Grid>
+      </TabPanel>
+      <TabPanel value={tabValue} index={1}>
+        Content for Tab 2
+      </TabPanel>
+      <TabPanel value={tabValue} index={2}>
+        Content for Tab 3
+      </TabPanel>
+      <TabPanel value={tabValue} index={3}>
+        Content for Tab 4
+      </TabPanel>
     </Container>
-  )
-}
+  );
+};
