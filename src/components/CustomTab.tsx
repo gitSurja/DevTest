@@ -13,10 +13,9 @@ interface TabPanelProps {
   children?: React.ReactNode;
   index?: number;
   value?: number;
-  isShadow?: boolean
 }
 function TabPanel(props: TabPanelProps) {
-  const { children, value, index, isShadow, ...other } = props;
+  const { children, value, index, ...other } = props;
 
   return (
     <Box
@@ -35,11 +34,11 @@ function TabPanel(props: TabPanelProps) {
         <Box sx={{
           paddingBlock: 5,
           paddingInline: 3,
-          boxShadow: isShadow ?
+          boxShadow:
               `0px 0px 4.4px rgba(0, 0, 0, 0.01),
               0px 0px 12.3px rgba(0, 0, 0, 0.015),
               0px 0px 29.5px rgba(0, 0, 0, 0.02),
-              0px 0px 98px rgba(0, 0, 0, 0.03)` : 'none',
+              0px 0px 98px rgba(0, 0, 0, 0.03)`,
           }}
         >
           {children}
@@ -93,7 +92,7 @@ export const CustomTab = ({tabHeaderData}: CustomTabProps) => {
           })}
         </Tabs>
       </Box>
-      <TabPanel isShadow value={tabValue} index={0}>
+      <TabPanel value={tabValue} index={0}>
         <Grid container justifyContent={'space-between'} gap={{ sm: 2, md: 0}} flexDirection={{ xs: 'column', md: 'row'}}>
           <Grid item sx={{ display: 'flex', width: { sm: '100%', md: 'auto'} }}>
             <CustomInput id="location-input" label="Locations" placeholder={'Enter your locations'}
