@@ -1,7 +1,7 @@
 import Box from '@mui/material/Box';
 import HeroImage from './../../assets/images/Hero.png';
 import { CustomTab } from '../../components/CustomTab';
-import { Container, Fade, Grow, Typography } from '@mui/material';
+import { Container, Fade, Typography } from '@mui/material';
 
 function HeroSection() {
   const tabHeaderData=[

@@ -17,7 +17,6 @@ import Link from '@mui/material/Link';
 import logoLarge from './../assets/logo/logoLarge.png'
 import { routerPaths } from '../router/routerConfig';
 import { Link as RouterLink } from "react-router-dom";
-import { Stack } from '@mui/material';
 
 const settings = ['Profile', 'Settings', 'Logout'];
 interface NavBar {

@@ -49,7 +49,7 @@ function TabPanel(props: TabPanelProps) {
 }
 
 interface CustomTabProps {
-  tabHeaderData?: []
+  tabHeaderData?: {label: string, type?: string}[];
   type?: string
 }
 export const CustomTab = ({tabHeaderData}: CustomTabProps) => {
@@ -60,10 +60,17 @@ export const CustomTab = ({tabHeaderData}: CustomTabProps) => {
   const [priceRange, setPriceRange] = React.useState(priceRangeData[0].value);
   
   const handleChangeTab = (event: React.SyntheticEvent, newValue: number) => {
+    event.preventDefault();
     setTabValue(newValue);
   };
 
-  const handleSubmit = (data: any) => {
+  interface FormData {
+    location: string;
+    propertyType: string;
+    priceRange: string;
+  }
+
+  const handleSubmit = (data: FormData) => {
     const reqmodel = {
       location: data.location,
       propertyType: data.propertyType,
@@ -78,7 +85,7 @@ export const CustomTab = ({tabHeaderData}: CustomTabProps) => {
         <Tabs value={tabValue} onChange={handleChangeTab} aria-label="basic tabs example"
           scrollButtons="auto"
           TabIndicatorProps={{
-            style: { display: 'none' }
+            style: { display: 'none' },
           }}>
           {tabHeaderData && tabHeaderData?.map(item => {
             return <Tab defaultChecked label={item.label} />;

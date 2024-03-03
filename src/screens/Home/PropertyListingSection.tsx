@@ -1,6 +1,6 @@
-import { Box, CardMedia, Container, Fade, Grid, Grow, IconButton, Stack, Typography, Zoom } from '@mui/material';
-import React, { useEffect, useState } from 'react';
-import { CarouselOneImage, iconSet, images } from '../../utils/data';
+import { Box, CardMedia, Container, Grow, IconButton, Stack, Typography } from '@mui/material';
+import { useState } from 'react';
+import { iconSet } from '../../utils/data';
 import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
 
