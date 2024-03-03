@@ -24,7 +24,7 @@ interface CustomCarouselProps {
 }
 
 export const CustomCarousel: React.FC<CustomCarouselProps> = ({images}) => {
-  const [imageIndex, setImageIndex] = useState(0);
+  const [imageIndex, setImageIndex] = useState(1);
   const handleImageIndex = (value: 'prev' | 'next') => {
     if (value === 'next') {
       setImageIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -77,7 +77,7 @@ export const CustomCarousel: React.FC<CustomCarouselProps> = ({images}) => {
             </Grid>
             <Grid item xs={8}>
               <Typography  variant="h6" sx={{ flex: 1, display: 'flex', justifyContent: {md: 'flex-start', lg: 'flex-end'}}} fontWeight={800}>
-                $ {images[imageIndex]?.priceMin} - $ {images[imageIndex]?.priceMax}
+                $ {images[imageIndex]?.priceMin.toLocaleString()} - $ {images[imageIndex]?.priceMax.toLocaleString()}
               </Typography>
             </Grid>
           </Grid>
@@ -93,10 +93,10 @@ export const CustomCarousel: React.FC<CustomCarouselProps> = ({images}) => {
           transform: {sm: 'translate(0%, 0%)', lg: 'translate(-2.5%, 0%)'},
           display: {xs: 'none', sm: 'flex'}
         }}>
-        <IconButton disabled={imageIndex === 0} aria-label='Left-icon' onClick={() => handleImageIndex('prev')}>
+        <IconButton aria-label='Left-icon' onClick={() => handleImageIndex('prev')}>
           <KeyboardArrowLeftIcon />
         </IconButton>
-        <IconButton disabled={imageIndex === images.length - 1} aria-label='Right-icon' onClick={() => handleImageIndex('next')}>
+        <IconButton aria-label='Right-icon' onClick={() => handleImageIndex('next')}>
           <KeyboardArrowRightIcon />
         </IconButton>
       </CardActions>

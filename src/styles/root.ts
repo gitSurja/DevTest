@@ -61,7 +61,7 @@ export const theme = createTheme({
     MuiTab: {
       styleOverrides: {
         root: {
-          backgroundColor: 'Background',
+          // backgroundColor: 'Background',
         }
       },
     },
