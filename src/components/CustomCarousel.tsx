@@ -55,8 +55,8 @@ export const CustomCarousel: React.FC<CustomCarouselProps> = ({images}) => {
           title={images[(imageIndex + 1) % images.length]?.label}
         />
         <CardContent>
-          <Grid container columns={16} rowGap={3}>
-            <Grid item xs={8} sx={{ flex: 1, justifyContent: 'space-between'}}>
+          <Grid container columns={{ xs: 8, md: 16}} rowGap={3}>
+            <Grid item md={8} sx={{ flex: 1, justifyContent: 'space-between'}}>
               <Typography variant="h6" component="div">
                 {images[imageIndex]?.label}
               </Typography>
@@ -64,10 +64,10 @@ export const CustomCarousel: React.FC<CustomCarouselProps> = ({images}) => {
                 {images[imageIndex]?.brand}
               </Typography>
             </Grid>
-            <Grid item xs={8} sx={{ flex: 1, display: 'flex', justifyContent: {md: 'flex-start', lg: 'flex-end'} }}>
+            <Grid item md={8} order={{sm: 2, md: 0}} sx={{flex: 1, display: 'flex', justifyContent: {sm: 'flex-start', md: 'flex-end'} }}>
               <Button variant='contained'>View Result</Button>
             </Grid>
-            <Grid item xs={8} sx={{ flex: 1, justifyContent: 'space-between'}}>
+            <Grid item md={8} sx={{ flex: 1, justifyContent: 'space-between'}}>
               <Typography variant="h6" component="div">
                 {images[imageIndex]?.type}
               </Typography>
@@ -75,8 +75,8 @@ export const CustomCarousel: React.FC<CustomCarouselProps> = ({images}) => {
                 {images[imageIndex]?.location}
               </Typography>
             </Grid>
-            <Grid item xs={8}>
-              <Typography  variant="h6" sx={{ flex: 1, display: 'flex', justifyContent: {md: 'flex-start', lg: 'flex-end'}}} fontWeight={800}>
+            <Grid item md={8}>
+              <Typography  variant="h6" sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end'}} fontWeight={800}>
                 $ {images[imageIndex]?.priceMin.toLocaleString()} - $ {images[imageIndex]?.priceMax.toLocaleString()}
               </Typography>
             </Grid>

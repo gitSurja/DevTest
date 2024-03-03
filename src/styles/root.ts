@@ -186,6 +186,7 @@ export const theme = createTheme({
         sx: {
           display: 'flex',
           alignItems: 'center',
+          boxSizing: 'border-box',
         }
       },
     },

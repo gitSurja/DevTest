@@ -54,7 +54,7 @@ function PropertyListing() {
             {iconSet.slice(imageIndex, imageIndex + 3).map((item, index) => (
               <Grow in key={index}>
                 <CardMedia
-                  sx={{ height: 400, minWidth: 170, width: '100%', marginTop: { xs: 2, md: index % 2 === 0 ? 20 : 0},
+                  sx={{ height: 400, width: '100%', marginTop: { xs: 2, md: index % 2 === 0 ? 20 : 0},
                 }}
                   image={item.imageUrl}
                   title={item.label}
