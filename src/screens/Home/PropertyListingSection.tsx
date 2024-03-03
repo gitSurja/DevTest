@@ -22,7 +22,7 @@ function PropertyListing() {
           <Stack sx={{flexDirection: 'column', flex: 1, justifyContent: 'space-between' }} gap={{ xs: 2, md: 5}}>
             {/* TEXT CONTENT */}
             <Stack gap={2} sx={{ height: '100%' }}>
-              <Typography color={'primary'} fontWeight={700} variant='caption'>Sell or Rent your property</Typography>
+              <Typography color={'primary'} variant='caption'>Sell or Rent your property</Typography>
               <Typography variant='h3' fontWeight={700}>Property owners get free posting when they register</Typography>
               <Typography variant='body2' >Post your residential / commercial property.</Typography>
             </Stack>

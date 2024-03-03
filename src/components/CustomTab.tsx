@@ -93,8 +93,8 @@ export const CustomTab = ({tabHeaderData}: CustomTabProps) => {
         </Tabs>
       </Box>
       <TabPanel value={tabValue} index={0}>
-        <Grid container justifyContent={'space-between'} gap={{ sm: 2, md: 0}} flexDirection={{ xs: 'column', md: 'row'}}>
-          <Grid item sx={{ display: 'flex', width: { sm: '100%', md: 'auto'} }}>
+        <Grid container justifyContent={'space-between'} gap={{ xs: 2, md: 0}} flexDirection={{ xs: 'column', md: 'row'}}>
+          <Grid item sx={{ display: 'flex', width: { xs: '100%', md: 'auto'} }}>
             <CustomInput id="location-input" label="Locations" placeholder={'Enter your locations'}
               value={location}
               onChange={setLocation}
@@ -105,11 +105,11 @@ export const CustomTab = ({tabHeaderData}: CustomTabProps) => {
             />
           </Grid>
           <Divider orientation="vertical" variant="fullWidth" flexItem />
-          <Grid item sx={{ alignItems: 'center', width: { sm: '100%', md: 'auto'} }} >
+          <Grid item sx={{ alignItems: 'center', width: { xs: '100%', md: 'auto'} }} >
             <CustomSelect defaultValue={propertyTypeData[0].value} value={propertyType} onChange={setPropertyType} label={'Property Type'} data={propertyTypeData} id={'property-type'} />
           </Grid>
           <Divider orientation="vertical" variant="middle" flexItem />
-          <Grid xs={5} item sx={{display: 'flex', alignItems: 'center', flexDirection: {sm:'column' ,md: 'row'}, minWidth: {sm: '100%', md: 'auto'}}}>
+          <Grid xs={5} item sx={{display: 'flex', alignItems: 'center', flexDirection: {xs:'column' ,md: 'row'}, minWidth: {xs: '100%', md: 'auto'}}}>
             <CustomSelect defaultValue={priceRangeData[0].value} value={priceRange} onChange={setPriceRange} label={'Price Range'} data={priceRangeData} id={'price-range'} />
             <Button onClick={() => handleSubmit({location, propertyType, priceRange})} variant={'contained'}>Search</Button>
           </Grid>

@@ -206,6 +206,18 @@ export const theme = createTheme({
           }
         },
         {
+          props: { variant: 'caption'},
+          style: {
+            fontWeight: 700,
+          }
+        },
+        {
+          props: { variant: 'h2'},
+          style: {
+            fontSize: 48,
+          }
+        },
+        {
           props: { variant: 'h3'},
           style: {
             fontSize: 48,

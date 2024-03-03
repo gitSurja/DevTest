@@ -8,16 +8,17 @@ function HeroSection() {
     {label: 'Buy'}, {label:'Rent'}, {label:'PG/Co-Living'}, {label:'Commercial'}
   ];
   return (
-    <Container maxWidth={'xl'} sx={{ position: 'relative', width: '100%'}}>
+    <Container maxWidth={'xl'} sx={{ position: 'relative', width: '100%', boxSizing:'border-box'}}>
       <Fade in={true} timeout={1000}>
       <Box
         sx={{
+
           position: 'absolute',
           top: '20%',
           left: '50%',
           transform: 'translate(-50%, -50%)',
           color: 'black',
-          display: {sm: 'none', md: 'block'}
+          display: {xs: 'none', md: 'block'}
         }}
       >
         <Box sx={{ backgroundColor: 'primary.main', padding: 2, transform: 'translate(-52%, 25%)'}}>
