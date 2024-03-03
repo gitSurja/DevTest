@@ -38,7 +38,7 @@ export const CustomCarousel: React.FC<CustomCarouselProps> = ({images}) => {
       <Box sx={{ display: 'flex', flexDirection: 'row', width: '100%'}}>
         {/* previous image */}
         <CardMedia
-          sx={{ height: 400, minWidth: '50%', transform: 'translate(-110%, 12%)', position: 'absolute' , opacity: 0.4}}
+          sx={{ display: { xs: 'none', lg: 'block'}, height: 400, minWidth: '50%', transform: 'translate(-110%, 12%)', position: 'absolute' , opacity: 0.4}}
           image={images[(imageIndex - 1 + images.length) % images.length]?.imgPath}
           title={images[(imageIndex - 1 + images.length) % images.length]?.label}
         />
@@ -50,7 +50,7 @@ export const CustomCarousel: React.FC<CustomCarouselProps> = ({images}) => {
         />
         {/* next image */}
         <CardMedia
-          sx={{ height: 400, minWidth: '50%', transform: 'translate(10%, 12%)', opacity: 0.4}}
+          sx={{display: { xs: 'none', lg: 'block'}, height: 400, minWidth: '50%', transform: 'translate(10%, 12%)', opacity: 0.4}}
           image={images[(imageIndex + 1) % images.length]?.imgPath}
           title={images[(imageIndex + 1) % images.length]?.label}
         />

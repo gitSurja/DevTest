@@ -81,9 +81,10 @@ export const CustomTab = ({tabHeaderData}: CustomTabProps) => {
 
   return (
     <Container maxWidth={'lg'}>
-      <Box width={'fit-content'} sx={{ backgroundColor: 'Background'}}>
+      <Box width={'fit-content'}>
         <Tabs value={tabValue} onChange={handleChangeTab} aria-label="basic tabs example"
           scrollButtons="auto"
+          variant='scrollable'
           TabIndicatorProps={{
             style: { display: 'none' },
           }}>
